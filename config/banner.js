@@ -2,7 +2,7 @@ import figlet from "figlet";
 import { colors } from "./colors.js";
 
 export function getBanner() {
-  const banner = figlet.textSync("Airdrop ASC", {
+  const banner = figlet.textSync("LayerEdge BOT", {
     font: "ANSI Shadow",
     horizontalLayout: "default",
     verticalLayout: "default",
@@ -13,9 +13,6 @@ export function getBanner() {
   output.push(`${colors.bannerText}${banner}${colors.reset}`);
   output.push(
     `${colors.bannerBorder}===============================================${colors.reset}`
-  );
-  output.push(
-    `${colors.bannerLinks}Project: Layer Edge BOT${colors.reset}`
   );
   output.push(
     `${colors.bannerLinks}GitHub: https://github.com/zamzasalim${colors.reset}`
