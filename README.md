@@ -116,8 +116,8 @@ node main.js
 
 ## Support & Links
 
-- GitHub: [https://github.com/Galkurta](https://github.com/zamzasalim)
-- Telegram: [https://t.me/galkurtarchive](https://t.me/airdropasc)
+- GitHub: [https://github.com/zamzasalim](https://github.com/zamzasalim)
+- Telegram: [https://t.me/airdropasc](https://t.me/airdropasc)
 - Referral Code: `9etRBDEo`
 
 ## Security Notice
