@@ -50,12 +50,12 @@ npm install axios ethers figlet http-proxy-agent
 
 4. Configure your wallets:
    - Edit `data.txt` file in the root directory
-   - Add your wallet private keys (one per line)`
+   - Add your wallet private keys & proxy (one per line)
 
 ## Project Structure
 
 ```
-LayerEdge/
+LayerEdge-BOT/
 ├── main.js          # Main application file
 ├── data.txt         # Private keys & proxy configuration
 ├── package.json     # Project dependencies
