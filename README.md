@@ -18,13 +18,13 @@ Before running the bot, make sure you have:
 
 - Node.js (v16 or higher)
 - npm (Node Package Manager)
-- A LayerEdge account (register with referral code: `7FYJLWy2`)
+- A LayerEdge account (register with referral code: `9etRBDEo`)
 - Wallet private keys for activation
 
 ## Registration
 
 1. Visit [LayerEdge Dashboard](https://dashboard.layeredge.io)
-2. Enter the referral code: `7FYJLWy2`
+2. Enter the referral code: `9etRBDEo`
 3. Connect your wallet and complete the registration
 4. Start earning points by running a light node!
 
@@ -33,19 +33,19 @@ Before running the bot, make sure you have:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/Galkurta/LayerEdge-BOT.git
+git clone https://github.com/zamzasalim/layeredge-bot.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd LayerEdge-BOT
+cd layeredge-bot
 ```
 
 3. Install dependencies:
 
 ```bash
-npm install axios ethers figlet
+npm install axios ethers figlet http
 ```
 
 4. Configure your wallets:
@@ -57,7 +57,7 @@ npm install axios ethers figlet
 ```
 LayerEdge/
 ├── main.js          # Main application file
-├── data.txt         # Private keys configuration
+├── data.txt         # Private keys & proxy configuration
 ├── package.json     # Project dependencies
 └── config/
     ├── banner.js    # Dashboard banner configuration
@@ -116,9 +116,9 @@ node main.js
 
 ## Support & Links
 
-- GitHub: [https://github.com/Galkurta](https://github.com/Galkurta)
-- Telegram: [https://t.me/galkurtarchive](https://t.me/galkurtarchive)
-- Referral Code: `7FYJLWy2`
+- GitHub: [https://github.com/Galkurta](https://github.com/zamzasalim)
+- Telegram: [https://t.me/galkurtarchive](https://t.me/airdropasc)
+- Referral Code: `9etRBDEo`
 
 ## Security Notice
 
