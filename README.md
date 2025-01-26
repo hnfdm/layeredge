@@ -20,6 +20,7 @@ Before running the bot, make sure you have:
 - npm (Node Package Manager)
 - A LayerEdge account (register with referral code: `9etRBDEo`)
 - Wallet private keys for activation
+- Active proxy
 
 ## Registration
 
