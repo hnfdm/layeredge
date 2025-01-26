@@ -1,2 +1,2 @@
 privatekey1,http://proxy1_user:proxy1_pass@proxy1_host:proxy1_port
-privatekey2,http://proxy1_user:proxy1_pass@proxy1_host:proxy1_port
+privatekey2,http://proxy2_user:proxy2_pass@proxy2_host:proxy2_port
