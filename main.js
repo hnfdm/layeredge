@@ -5,6 +5,7 @@ import { getBanner } from "./config/banner.js";
 import { colors } from "./config/colors.js";
 import { Wallet } from "ethers";
 import HttpsProxyAgent from "https-proxy-agent";
+import { SocksProxyAgent } from "socks-proxy-agent";
 
 const CONFIG = {
   PING_INTERVAL: 0.5,
@@ -95,11 +96,25 @@ class WalletDashboard {
   };
 
   // Jika proxy digunakan, tambahkan konfigurasi proxy
-  if (proxyUrl) {
-    const agent = new HttpsProxyAgent(proxyUrl);
-    axiosConfig.httpAgent = agent;
-    axiosConfig.httpsAgent = agent;
-    axiosConfig.proxy = false; // Nonaktifkan pengaturan proxy default axios
+ if (proxyUrl) {
+    // Periksa apakah proxy adalah SOCKS5
+    if (proxyUrl.startsWith("socks5://")) {
+      const agent = new SocksProxyAgent(proxyUrl); // Gunakan SocksProxyAgent
+      axiosConfig.httpAgent = agent;
+      axiosConfig.httpsAgent = agent;
+      axiosConfig.proxy = false; // Nonaktifkan pengaturan proxy default axios
+    } 
+    // Jika proxy adalah HTTPS
+    else if (proxyUrl.startsWith("http://") || proxyUrl.startsWith("https://")) {
+      const agent = new HttpsProxyAgent(proxyUrl); // Gunakan HttpsProxyAgent
+      axiosConfig.httpAgent = agent;
+      axiosConfig.httpsAgent = agent;
+      axiosConfig.proxy = false; // Nonaktifkan pengaturan proxy default axios
+    } 
+    // Jika format proxy tidak dikenali
+    else {
+      console.warn(`Unknown proxy format: ${proxyUrl}`);
+    }
   }
 
   return axios.create(axiosConfig);
