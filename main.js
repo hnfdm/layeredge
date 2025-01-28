@@ -21,7 +21,7 @@ class WalletDashboard {
     this.wallets = [];
     this.selectedIndex = 0;
     this.currentPage = 0;
-    this.walletsPerPage = 5;
+    this.walletsPerPage = 6;
     this.isRunning = true;
     this.pingIntervals = new Map();
     this.walletStats = new Map();
