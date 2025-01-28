@@ -1,2 +1,4 @@
-privatekey1,http://proxy1_user:proxy1_pass@proxy1_host:proxy1_port
-privatekey2,http://proxy2_user:proxy2_pass@proxy2_host:proxy2_port
+privateKey1,socks5://username:password@host:port
+privateKey2,https://username:password@host:port
+privateKey3,http://username:password@host:port
+privateKey4,  # Tidak ada proxy untuk wallet ini
