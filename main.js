@@ -112,7 +112,7 @@ class WalletDashboard {
       const message = `Node activation request for ${wallet} at ${timestamp}`;
       const sign = await walletInstance.signMessage(message);
 
-      const response = await this.getApi().post(
+      const response = await this.getApi(wallet).post(
         `/light-node/node-action/${wallet}/start`,
         {
           sign: sign,
@@ -129,7 +129,7 @@ class WalletDashboard {
   async checkNodeStatus(wallet, retries = 20) {
     for (let i = 0; i < retries; i++) {
       try {
-        const response = await this.getApi().get(
+        const response = await this.getApi(wallet).get(
           `/light-node/node-status/${wallet}`
         );
         return response.data?.data?.startTimestamp !== null;
@@ -153,7 +153,7 @@ class WalletDashboard {
 
   async checkPoints(wallet) {
     try {
-      const response = await this.getApi().get(
+      const response = await this.getApi(wallet).get(
         `/referral/wallet-details/${wallet}`
       );
       return response.data?.data?.nodePoints || 0;
