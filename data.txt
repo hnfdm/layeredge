@@ -1,4 +1,0 @@
-privateKey1,https://username:password@host:port
-privateKey2,http://username:password@host:port
-privateKey3,username:password@host:port
-privateKey4,  # Tidak ada proxy untuk wallet ini
