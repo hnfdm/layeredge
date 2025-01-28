@@ -41,14 +41,14 @@ class WalletDashboard {
     this.proxies = new Map(); // Map untuk menyimpan proxy per wallet
 
     for (let line of lines) {
-      const [privateKey, proxyUrl] = line.split(","); // Pisahkan private key dan proxy
+      const [privateKey, proxy] = line.split(","); // Pisahkan private key dan proxy
       try {
         const wallet = new Wallet(privateKey.trim());
         const address = wallet.address;
 
         this.wallets.push(address);
         this.privateKeys.set(address, privateKey.trim());
-        this.proxies.set(address, proxyUrl ? proxyUrl.trim() : null); // Simpan proxy untuk wallet
+        this.proxies.set(address, proxy ? proxy.trim() : null); // Simpan proxy untuk wallet
 
         this.walletStats.set(address, {
           status: "Starting",
