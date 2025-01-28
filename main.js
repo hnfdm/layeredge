@@ -86,8 +86,8 @@ class WalletDashboard {
       "Accept-Encoding": "gzip, deflate, br",
       "Accept-Language": "en-US,en;q=0.9",
       "Content-Type": "application/json",
-      Origin: "https://referralapi.layeredge.io",
-      Referer: "https://referralapi.layeredge.io/",
+      Origin: "https://dashboard.layeredge.io",
+      Referer: "https://dashboard.layeredge.io/",
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
     },
@@ -190,6 +190,28 @@ class WalletDashboard {
     }
   }
 
+  /*async checkPoints(wallet) {
+    try {
+      const response = await this.getApi().get(
+        `/referral/wallet-details/${wallet}`
+      );
+  
+      // Debug respons API
+      console.log("API Full Response:", response.data);
+  
+      // Sesuaikan dengan struktur respons API
+      if (!response.data?.data) {
+        console.warn(`No points data found for wallet: ${wallet}`);
+        return 0;
+      }
+  
+      return response.data.data.nodePoints || 0;
+    } catch (error) {
+      console.error(`Error checking points for wallet: ${wallet}`, error.message);
+      throw new Error(`Check points failed: ${error.message}`);
+    }
+  } */ 
+  
   async startPing(wallet) {
     if (this.pingIntervals.has(wallet)) {
       return;
@@ -283,12 +305,20 @@ class WalletDashboard {
     for (let i = startIndex; i < endIndex; i++) {
       const wallet = this.wallets[i];
       const stats = this.walletStats.get(wallet);
+
+      // Ambil proxy untuk wallet dan ekstrak hanya IP-nya
+      const proxy = this.proxies.get(wallet) || "No Proxy";
+      const proxyIp = proxy !== "No Proxy" ? proxy.split("@").pop().split(":")[0] : "No Proxy";
+
       const prefix =
         i === this.selectedIndex ? `${colors.cyan}→${colors.reset} ` : "  ";
       const shortWallet = `${wallet.substr(0, 6)}...${wallet.substr(-4)}`;
 
       output.push(
         `${prefix}Wallet: ${colors.accountName}${shortWallet}${colors.reset}`
+      );
+      output.push(
+        `   Proxy: ${colors.info}${proxyIp}${colors.reset}` // Menampilkan hanya IP
       );
       output.push(
         `   Status: ${this.getStatusColor(stats.status)}${stats.status}${
