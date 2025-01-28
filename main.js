@@ -21,7 +21,7 @@ class WalletDashboard {
     this.wallets = [];
     this.selectedIndex = 0;
     this.currentPage = 0;
-    this.walletsPerPage = 6;
+    this.walletsPerPage = 5;
     this.isRunning = true;
     this.pingIntervals = new Map();
     this.walletStats = new Map();
@@ -80,18 +80,18 @@ class WalletDashboard {
   getApi(wallet) {
   const proxyUrl = this.proxies.get(wallet); // Ambil proxy untuk wallet
   const axiosConfig = {
-    baseURL: "https://referralapi.layeredge.io/api",
+    baseURL: "https://referral-api.layeredge.io/api",
     headers: {
       Accept: "*/*",
       "Accept-Encoding": "gzip, deflate, br",
       "Accept-Language": "en-US,en;q=0.9",
       "Content-Type": "application/json",
-      Origin: "https://dashboard.layeredge.io",
-      Referer: "https://dashboard.layeredge.io/",
+      Origin: "https://referral-api.layeredge.io",
+      Referer: "https://referral-api.layeredge.io/",
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
     },
-    timeout: 60000,
+    timeout: 30000,
   };
 
   // Jika proxy digunakan, tambahkan konfigurasi proxy
@@ -112,7 +112,7 @@ class WalletDashboard {
       const message = `Node activation request for ${wallet} at ${timestamp}`;
       const sign = await walletInstance.signMessage(message);
 
-      const response = await this.getApi(wallet).post(
+      const response = await this.getApi().post(
         `/light-node/node-action/${wallet}/start`,
         {
           sign: sign,
@@ -129,7 +129,7 @@ class WalletDashboard {
   async checkNodeStatus(wallet, retries = 20) {
     for (let i = 0; i < retries; i++) {
       try {
-        const response = await this.getApi(wallet).get(
+        const response = await this.getApi().get(
           `/light-node/node-status/${wallet}`
         );
         return response.data?.data?.startTimestamp !== null;
@@ -153,7 +153,7 @@ class WalletDashboard {
 
   async checkPoints(wallet) {
     try {
-      const response = await this.getApi(wallet).get(
+      const response = await this.getApi().get(
         `/referral/wallet-details/${wallet}`
       );
       return response.data?.data?.nodePoints || 0;
