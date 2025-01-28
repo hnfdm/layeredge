@@ -46,7 +46,7 @@ cd layeredge-bot
 3. Install dependencies:
 
 ```bash
-npm install axios ethers figlet http-proxy-agent socks-proxy-agent
+npm install axios ethers figlet http-proxy-agent
 ```
 
 4. Configure your wallets:
