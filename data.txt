@@ -1,0 +1,4 @@
+pk1,https://username:pass@ip:port
+pk2,http://username:pass@ip:port
+pk3,username:pass@ip:port
+pk4,//noproxy
